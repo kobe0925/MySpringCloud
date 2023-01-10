@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: auth-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+  profiles:
+    active: dev
+  # 配置是否允许具有相同名称的 bean 来覆盖之前的 bean；
+  main:
+    allow-bean-definition-overriding: true
+
+#logging:
+#  level:
+#    org.springframework: DEBUG

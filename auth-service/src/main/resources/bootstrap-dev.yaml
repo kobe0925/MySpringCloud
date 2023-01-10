@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: auth-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: 5ee0dfab-a15a-4544-9561-2331b5b0e072
+        group: DEFAULT_GROUP
+  profiles:
+    active: dev
