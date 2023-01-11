@@ -1,11 +1,18 @@
 package com.kobe.xt.filter;
 
+import com.kobe.xt.component.security.HttpResponseCookieDecorator;
 import com.kobe.xt.component.security.HttpResponseDecorator;
+import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.filter.NettyWriteResponseFilter;
 import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.http.HttpCookie;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -36,6 +43,11 @@ public class ResponseGlobalFilter implements GlobalFilter, Ordered {
             return chain
                     .filter(exchange.mutate().response(responseDecorator).build());
         }
+//        if(path.contains("/auth/login")){
+//            HttpResponseCookieDecorator responseCookieDecorator = new HttpResponseCookieDecorator(exchange.getResponse());
+//            return chain
+//                    .filter(exchange.mutate().response(responseCookieDecorator).build());
+//        }
         return chain.filter(exchange);
     }
 

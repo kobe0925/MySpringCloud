@@ -3,7 +3,8 @@ package com.kobe.xt;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+//import org.springframework.session.data.redis.RedisFlushMode;
+//import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
  * @author kobe_xt
@@ -13,7 +14,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableRedisHttpSession
+//@EnableRedisHttpSession(redisFlushMode = RedisFlushMode.IMMEDIATE)
 public class AuthServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(AuthServiceApplication.class,args);

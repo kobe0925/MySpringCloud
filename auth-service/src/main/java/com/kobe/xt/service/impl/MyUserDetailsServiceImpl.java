@@ -31,6 +31,8 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
 
     private static final String SMS_GRANT_TYPE = "sms";
 
+    private static final String SCAN_CODE_GRANT_TYPE = "scan_code";
+
     @Autowired
     private UserEntityRepository userEntityRepository;
 
@@ -51,7 +53,7 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
             Map<String, String> details = (Map<String, String>) authentication.getDetails();
             if(details != null){
                 String grantType = details.get("grant_type");
-                if(SMS_GRANT_TYPE.equals(grantType)){
+                if(SMS_GRANT_TYPE.equals(grantType) || SCAN_CODE_GRANT_TYPE.equals(grantType)){
                     password = passwordEncoder.encode(password);
                 }
             }
